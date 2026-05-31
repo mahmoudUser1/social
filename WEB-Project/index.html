@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>تسجيل الدخول</title>
+        <style>
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                background: linear-gradient(#e0e0e0, #ffffff);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                direction: rtl;
+            }
+            .auth-box {
+                background-color: #fff;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 350px;
+            }
+            .auth-box h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+            }
+            .auth-box input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+            }
+            .auth-box button {
+                width: 100%;
+                padding: 10px;
+                background-color: #1976d2;
+                border: none;
+                color: white;
+                font-size: 16px;
+                border-radius: 8px;
+                cursor: pointer;
+            }
+            .auth-box button:hover {
+                background-color: #1565c0;
+            }
+            .back-link {
+                text-align: center;
+                margin-top: 15px;
+            }
+            .back-link a {
+                color: #1976d2;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="auth-box">
+            <h2>تسجيل الدخول</h2>
+            <form id="loginForm">
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="البريد الإلكتروني"
+                    required
+                />
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="كلمة السر"
+                    required
+                />
+                <button type="submit">دخول</button>
+                <div class="back-link">
+                    <a href="index1.html">الرجوع للصفحة الرئيسية</a>
+                </div>
+            </form>
+        </div>
+
+        <script src="auth.js"></script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل حساب جديد</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#e0e0e0, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      direction: rtl;
+    }
+    .auth-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 350px;
+    }
+    .auth-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .auth-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .auth-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1976d2;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .auth-box button:hover {
+      background-color: #1565c0;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .back-link a {
+      color: #1976d2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-box">
+    <h2>تسجيل حساب جديد</h2>
+    <form id="registerForm">
+      <input type="text" id="registerName" placeholder="الاسم" required>
+      <input type="email" id="registerEmail" placeholder="البريد الإلكتروني" required>
+      <input type="password" id="registerPassword" placeholder="كلمة السر (6 أحرف على الأقل)" required>
+      <button type="submit">تسجيل</button>
+      <div class="back-link">
+        <a href="index1.html">الرجوع للصفحة الرئيسية</a>
+      </div>
+    </form>
+  </div>
+  <script src="auth.js"></script>
+</body>
+</html>

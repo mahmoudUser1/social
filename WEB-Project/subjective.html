@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الملف الشخصي</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      background-color: #f5f5f5;
+      direction: rtl;
+    }
+
+    /* --- الشريط الجانبي (للكمبيوتر) --- */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #2c3e50;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background-color: #34495e;
+    }
+    .user-info {
+      padding: 15px;
+      border-bottom: 1px solid #34495e;
+      text-align: center;
+    }
+    .post-avatar {
+      width: 40px;
+      height: 40px;
+      background-color: #1976d2;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      margin: 0 auto 10px;
+    }
+    .logout-btn {
+      margin-top: auto;
+      background-color: #e74c3c !important;
+      text-align: center;
+      margin: 20px;
+      border-radius: 4px;
+    }
+
+    /* --- شريط التنقل العلوي (للموبايل) --- */
+    .top-navbar {
+      display: none; /* مخفي افتراضيًا */
+      background-color: #2c3e50;
+      color: white;
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .top-navbar .nav-links {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .top-navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 5px;
+    }
+    .top-navbar a:hover {
+      background-color: #34495e;
+      border-radius: 4px;
+    }
+    .menu-toggle {
+        display: none; /* زر القائمة مخفي افتراضيًا */
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 5px 15px;
+    }
+
+    /* --- المحتوى الرئيسي --- */
+    .main-content {
+      margin-right: 250px; /* مساحة للشريط الجانبي */
+      padding: 20px;
+      width: calc(100% - 250px);
+      transition: margin-right 0.3s ease;
+      padding-top: 20px; /* مساحة افتراضية */
+    }
+
+    /* --- بطاقة الملف الشخصي --- */
+    .profile-card {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .profile-header {
+      display: flex;
+      flex-direction: column; /* تغيير الترتيب ليناسب الأفاتار الكبير */
+      align-items: center;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .profile-header .post-avatar {
+        width: 80px; /* تكبير الأفاتار */
+        height: 80px;
+        font-size: 36px; /* تكبير الحرف */
+        margin-bottom: 15px;
+    }
+    .profile-header h3 {
+        margin: 0;
+        font-size: 22px;
+    }
+    .profile-details p {
+      margin: 12px 0;
+      font-size: 16px;
+      color: #555;
+      border-bottom: 1px solid #eee; /* خط فاصل */
+      padding-bottom: 10px;
+    }
+    .profile-details p:last-child {
+        border-bottom: none;
+    }
+    .profile-details strong {
+      color: #333;
+      margin-left: 8px; /* هامش للملصق */
+    }
+
+    /* --- استجابة للتصميم (Mobile) --- */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(100%); /* إخفاء الشريط الجانبي */
+      }
+      .sidebar.open {
+          transform: translateX(0);
+      }
+      .main-content {
+        margin-right: 0; /* إزالة الهامش */
+        width: 100%;
+        padding: 10px;
+        padding-top: 70px; /* مساحة للشريط العلوي */
+      }
+      .top-navbar {
+        display: flex; /* إظهار الشريط العلوي */
+        justify-content: space-between; /* توزيع العناصر */
+      }
+      .menu-toggle {
+          display: block; /* إظهار زر القائمة */
+      }
+      .top-navbar .nav-links {
+          display: none; /* إخفاء الروابط افتراضيًا */
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: #2c3e50;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      }
+      .top-navbar .nav-links.open {
+          display: flex;
+      }
+      .top-navbar .nav-links a {
+          padding: 15px 20px;
+          border-bottom: 1px solid #34495e;
+          text-align: center;
+      }
+      .top-navbar .nav-links a:last-child {
+          border-bottom: none;
+      }
+      .profile-card {
+          padding: 20px;
+      }
+      .profile-header .post-avatar {
+          width: 60px;
+          height: 60px;
+          font-size: 28px;
+      }
+      .profile-header h3 {
+          font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط التنقل العلوي (للموبايل) -->
+  <div class="top-navbar">
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="thesociety.html">🏠 الرئيسية</a>
+      <a href="subjective.html">👤 الملف الشخصي</a>
+      <a href="Themessage.html">💬 الرسائل</a>
+      <a href="data.html">📊 جدول البيانات</a>
+      <a href="#" class="logout-btn" id="logoutBtnMobile">تسجيل الخروج</a>
+    </div>
+  </div>
+
+  <!-- الشريط الجانبي (للكمبيوتر) -->
+  <div class="sidebar" id="sidebar">
+    <div class="user-info">
+      <div class="post-avatar" id="userAvatar"></div>
+      <div id="userName"></div>
+    </div>
+    <a href="thesociety.html">🏠 الرئيسية</a>
+    <a href="subjective.html">👤 الملف الشخصي</a>
+    <a href="Themessage.html">💬 الرسائل</a>
+    <a href="data.html">📊 جدول البيانات</a>
+    <a href="#" class="logout-btn" id="logoutBtnSidebar">تسجيل الخروج</a>
+  </div>
+
+  <!-- المحتوى الرئيسي -->
+  <div class="main-content">
+    <h2>الملف الشخصي</h2>
+    <div class="profile-card" id="profileInfo">
+      <!-- معلومات الملف الشخصي ستظهر هنا بواسطة app.js -->
+      <p>جاري تحميل معلومات الملف الشخصي...</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    // إضافة وظيفة تبديل القائمة للموبايل
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        const logoutBtnMobile = document.getElementById('logoutBtnMobile');
+        // زر الشريط الجانبي يتم التعامل معه في app.js عبر #logoutBtn
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+
+        // التعامل مع تسجيل الخروج للموبايل
+        function handleLogout() {
+            localStorage.removeItem('currentUser');
+            // يمكنك إضافة مسح بيانات أخرى إذا لزم الأمر
+            window.location.href = 'index1.html';
+        }
+
+        if (logoutBtnMobile) {
+            logoutBtnMobile.addEventListener('click', handleLogout);
+        }
+    });
+  </script>
+</body>
+</html>
+

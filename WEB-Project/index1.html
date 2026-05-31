@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>البداية</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#e0e0e0, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      direction: rtl;
+    }
+    .welcome-box {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+    }
+    .welcome-box h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .welcome-box p {
+      margin: 15px 0;
+      color: #555;
+    }
+    .welcome-box button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1976d2;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 10px 0;
+    }
+    .welcome-box button:hover {
+      background-color: #1565c0;
+    }
+    .welcome-box img {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-box">
+    <img src="m2.png">
+    <h2>مرحباً بك في المجتمع</h2>
+    <p>أول مرة تستخدم البرنامج؟</p>
+    <button onclick="window.location.href='register.html'">تسجيل حساب جديد</button>
+    <p>مسجل من قبل؟</p>
+    <button onclick="window.location.href='index.html'">تسجيل الدخول</button>
+  </div>
+</body>
+</html>

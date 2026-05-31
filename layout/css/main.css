@@ -1,0 +1,148 @@
+@font-face {
+    font-family: "Cairo";
+    src: url("../fonts/Cairo-VariableFont_slnt\,wght.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Cairo";
+    font-weight: 500;
+    direction: rtl;
+}
+
+.pro-log {
+    background: linear-gradient(#e0e0e0, #ffffff);
+    display: flex;
+    padding: 25px;
+}
+
+.box-page {
+    margin-top: 100px;
+    max-height: fit-content;
+}
+
+.user-info {
+    border-bottom: 1px solid #34495e;
+    text-align: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+}
+
+nav {
+    z-index: 999999;
+}
+
+@media (min-width: 768px) {
+    nav {
+        right: 0;
+        bottom: 0;
+    }
+
+    .menuToggle {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .link-nav-1 {
+        max-height: 0;
+        overflow: hidden;
+        transition: 1s;
+    }
+
+    .link-nav-1.act {
+        max-height: 600px;
+    }
+
+    .user-info {
+        display: none;
+    }
+}
+
+.chat-area {
+    min-height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
+}
+
+.users-list {
+    min-height: 250px;
+    max-height: 250px;
+}
+
+@media (min-width: 992px) {
+
+    .users-list,
+    .chat-area {
+        min-height: calc(100vh - 80px);
+        max-height: calc(100vh - 80px);
+    }
+
+}
+
+.message-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    background-color: #f0f0f0;
+}
+
+.right-0 {
+    right: 0 !important;
+}
+
+.left-0 {
+    left: 0 !important;
+}
+
+.profile-info {
+    border-bottom: 1px solid #34495e;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    font-size: 100px;
+}
+
+.post-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+/* 
+.message-input-area textarea {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    resize: none;
+    min-height: 20px;
+    
+    max-height: 100px;
+    
+    margin-left: 10px;
+    font-family: inherit;
+}
+
+.message-input-area button {
+    padding: 10px 15px;
+    background-color: #1976d2;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.message-input-area button:hover {
+    background-color: #1565c0;
+} */
