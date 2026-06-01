@@ -1,6 +1,6 @@
 <?php
 
-$pageTitle = "الدردشة";
+$pageTitle = 'messages';
 
 session_start();
 
@@ -27,7 +27,7 @@ if (isset($_SESSION["email"])) {
                         <!-- عمود قائمة المستخدمين -->
                         <div class="col-12 col-lg-4 p-0 border-end users-sidebar d-flex flex-column">
                             <div class="sidebar-header p-3 border-bottom bg-white">
-                                <h5 class="m-0 fw-bold text-primary"><i class="fas fa-users me-2"></i>المستخدمون</h5>
+                                <h5 class="m-0 fw-bold text-primary"><i class="fas fa-users me-2"></i><?= lang('C_USERS') ?></h5>
                             </div>
                             <div class="users-list-scroll flex-grow-1 overflow-auto" id="usersList">
                                 <div class="text-center p-5">
@@ -40,15 +40,15 @@ if (isset($_SESSION["email"])) {
                         <div class="col-12 col-lg-8 p-0 d-flex flex-column chat-content-area bg-white">
                             <!-- رأس الدردشة (ثابت) -->
                             <div class="chat-header-fixed p-3 border-bottom d-flex align-items-center bg-white" id="chatHeader">
-                                <div class="text-muted"><i class="fas fa-comment-medical me-2"></i>ابدأ محادثة جديدة</div>
+                                <div class="text-muted"><i class="fas fa-comment-medical me-2"></i><?= lang('C_NEW_CONVERSATION') ?></div>
                             </div>
 
                             <!-- عرض الرسائل (سكرول مستقل) -->
                             <div class="messages-container flex-grow-1 p-3 overflow-auto d-flex flex-column" id="messagesDisplay">
                                 <div class="welcome-screen h-100 d-flex align-items-center justify-content-center text-center flex-column opacity-50">
-                                    <i class="fas fa-comments fa-5xl mb-4 text-primary"></i>
-                                    <h3>مرحباً بك في الرسائل</h3>
-                                    <p>اختر صديقاً من القائمة الجانبية لبدء المحادثة</p>
+                                    <i class="fas fa-comments fa-5xl mb-4 text-primary" style="font-size: 100px;"></i>
+                                    <h3><?= lang('C_WELCOME_MESSAGES') ?></h3>
+                                    <p><?= lang('C_SELECT_CONTACT') ?></p>
                                 </div>
                             </div>
 
@@ -57,7 +57,7 @@ if (isset($_SESSION["email"])) {
                                 <form id="chatForm" class="d-flex align-items-end gap-2">
                                     <input type="hidden" id="receiverId" value="">
                                     <div class="flex-grow-1">
-                                        <textarea class="form-control chat-textarea" id="messageText" placeholder="اكتب رسالتك هنا..." rows="1"></textarea>
+                                        <textarea class="form-control chat-textarea" id="messageText" placeholder='<?= lang('C_TYPE_MESSAGE') ?>' rows="1"></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary send-btn" id="sendMessageBtn">
                                         <i class="fas fa-paper-plane"></i>
@@ -145,7 +145,7 @@ if (isset($_SESSION["email"])) {
 
         .messages-container {
             background-color: #f8f9fa;
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-image: url(<?= $image_chat ?>);
             scroll-behavior: smooth;
         }
 
@@ -274,7 +274,7 @@ if (isset($_SESSION["email"])) {
                     <div class="avatar-circle bg-primary" style="width:40px; height:40px; margin-left:10px;">${user.name.charAt(0).toUpperCase()}</div>
                     <div>
                         <h6 class="m-0 fw-bold">${user.name}</h6>
-                        <small class="text-success"><i class="fas fa-circle me-1" style="font-size:0.6rem"></i>متصل الآن</small>
+                        <small class="text-success"><i class="fas fa-circle me-1" style="font-size:0.6rem"></i><?= lang('C_ONLINE') ?></small>
                     </div>
                 `;
                 
@@ -307,7 +307,7 @@ if (isset($_SESSION["email"])) {
                             const div = document.createElement('div');
                             div.className = `msg-bubble ${isSent ? 'msg-sent' : 'msg-received'}`;
                             div.innerHTML = `
-                                <div>${msg.messages}</div>
+                                <div><pre class="text-post overflow-hidden">${msg.messages}</pre></div>
                                 <span class="msg-time">${msg['created-at']}</span>
                             `;
                             messagesDisplay.appendChild(div);

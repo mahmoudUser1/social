@@ -33,17 +33,20 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="text-light text-capitalize"><?= $user['name'] ?></div>
     </div>
     <div class="link-nav-1" id="link-navber">
-        <a class="text-decoration-none text-info d-block my-3 text-center" href="home.php"><i
+        <a class="text-decoration-none text-info d-block p-3 text-center 
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/home.php') ? 'active-link' : ''; ?>" href="home.php"><i
                 class="fa-solid fa-home"></i>
-            الرئيسية</a>
-        <a class="text-decoration-none text-info d-block my-3 text-center" href="profile.php"><i
+            <?= lang('P_HOME') ?></a>
+        <a class="text-decoration-none text-info d-block p-3 text-center 
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/profile.php') ? 'active-link' : ''; ?>" href="profile.php"><i
                 class="fa-solid fa-user"></i>
-            الملف الشخصي</a>
-        <a class="text-decoration-none text-info d-block my-3 text-center" href="chat.php"><i
+            <?= lang('P_PROFILE') ?></a>
+        <a class="text-decoration-none text-info d-block p-3 text-center 
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/chat.php') ? 'active-link' : ''; ?>" href="chat.php"><i
                 class="fa-solid fa-comment-dots"></i>
-            الرسائل</a>
-        <a class="text-decoration-none text-info d-block my-3 text-center" href=""><i class="fa-solid fa-gear"></i>
-            الاعدادات</a>
-        <a href="logout.php" class="btn btn-danger d-block m-2">تسجيل الخروج</a>
+            <?= lang('P_MESSAGES') ?></a>
+        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/settings.php') ? 'active-link' : ''; ?>" href="settings.php"><i class="fa-solid fa-gear"></i>
+            <?= lang('P_SETTINGS') ?></a>
+        <!-- <a href="logout.php" class="btn btn-danger d-block m-2">تسجيل الخروج</a> -->
     </div>
 </nav>

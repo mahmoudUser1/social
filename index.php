@@ -15,11 +15,11 @@ include "initials.php";
 <div class="vh-100 pro-log">
 
     <div class="text-center rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
-        <h2 class="mb-4">مرحباً بك في المجتمع</h2>
-        <p>أول مرة تستخدم البرنامج؟</p>
-        <a href="log.php?page=newlogin" class="btn btn-primary mb-3">تسجيل حساب جديد</a>
-        <p>مسجل من قبل؟</p>
-        <a href="log.php?page=login" class="btn btn-primary">تسجيل الدخول</a>
+        <h2 class="mb-4"><?= lang('S_WELCOME') ?></h2>
+        <p><?= lang('FIRST_TIME') ?></p>
+        <a href="log.php?page=newlogin" class="btn btn-primary mb-3"><?= lang('REGISTER_NEW') ?></a>
+        <p><?= lang('ALREADY_REGISTERED') ?></p>
+        <a href="log.php?page=login" class="btn btn-primary"><?= lang('R_LOGIN') ?></a>
     </div>
 </div>
 

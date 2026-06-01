@@ -41,15 +41,15 @@ if ($page == "login") {
     <div class="vh-100 pro-log">
 
         <div class="rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
-            <h2 class="text-center">تسجيل الدخول</h2>
+            <h2 class="text-center"><?= lang('REGISTER') ?></h2>
             <form action="?page=login" method="post">
-                <input name="mail" type="email" placeholder="البريد الإلكتروني" class="form-control my-3"
+                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3"
                     autocomplete="off" />
-                <input name="pass" type="password" placeholder="كلمة السر" class="form-control my-3"
+                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3"
                     autocomplete="new-password" />
-                <button type="submit" class="btn btn-primary w-100">دخول</button>
+                <button type="submit" class="btn btn-primary w-100"><?= lang('R_LOGIN') ?></button>
 
-                <a href="index.php" class="d-block m-3 text-center">الرجوع للصفحة الرئيسية</a>
+                <a href="index.php" class="d-block m-3 text-center"><?= lang('R_HOME') ?></a>
             </form>
         </div>
 
@@ -91,16 +91,16 @@ if ($page == "login") {
     <div class="vh-100 pro-log">
 
         <div class="rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
-            <h2 class="text-center">تسجيل حساب جديد</h2>
+            <h2 class="text-center"><?= lang('REGISTER_NEW') ?></h2>
             <form action="?page=newlogin" method="post">
-                <input name="name" type="text" placeholder="الاسم" class="form-control my-3" autocomplete="off" />
-                <input name="mail" type="email" placeholder="البريد الإلكتروني" class="form-control my-3"
+                <input name="name" type="text" placeholder="<?= lang('INPUT_NAME') ?>" class="form-control my-3" autocomplete="off" />
+                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3"
                     autocomplete="off" />
-                <input name="pass" type="password" placeholder="كلمة السر" class="form-control my-3"
+                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3"
                     autocomplete="new-password" />
-                <button type="submit" class="btn btn-primary w-100">تسجيل</button>
+                <button type="submit" class="btn btn-primary w-100"><?= lang('R_N_LOGIN') ?></button>
 
-                <a href="index.php" class="d-block m-3 text-center">الرجوع للصفحة الرئيسية</a>
+                <a href="index.php" class="d-block m-3 text-center"><?= lang('R_HOME') ?></a>
             </form>
         </div>
 
@@ -147,15 +147,15 @@ if ($page == "login") {
     <div class="vh-100 pro-log">
 
         <div class="rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
-            <h2 class="text-center">تسجيل الدخول</h2>
+            <h2 class="text-center"><?= lang('REGISTER') ?></h2>
             <form action="?page=login" method="post">
-                <input name="mail" type="email" placeholder="البريد الإلكتروني" class="form-control my-3"
+                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3"
                     autocomplete="off" />
-                <input name="pass" type="password" placeholder="كلمة السر" class="form-control my-3"
+                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3"
                     autocomplete="new-password" />
-                <button type="submit" class="btn btn-primary w-100">دخول</button>
+                <button type="submit" class="btn btn-primary w-100"><?= lang('R_LOGIN') ?></button>
 
-                <a href="index.php" class="d-block m-3 text-center">الرجوع للصفحة الرئيسية</a>
+                <a href="index.php" class="d-block m-3 text-center"><?= lang('R_HOME') ?></a>
             </form>
         </div>
 
