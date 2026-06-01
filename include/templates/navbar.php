@@ -39,9 +39,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <a class="text-decoration-none text-info d-block my-3 text-center" href="profile.php"><i
                 class="fa-solid fa-user"></i>
             الملف الشخصي</a>
-        <!-- <a class="text-decoration-none text-info d-block my-3 text-center" href="chat.php"><i
+        <a class="text-decoration-none text-info d-block my-3 text-center" href="chat.php"><i
                 class="fa-solid fa-comment-dots"></i>
-            الرسائل</a> -->
+            الرسائل</a>
         <a class="text-decoration-none text-info d-block my-3 text-center" href=""><i class="fa-solid fa-gear"></i>
             الاعدادات</a>
         <a href="logout.php" class="btn btn-danger d-block m-2">تسجيل الخروج</a>
