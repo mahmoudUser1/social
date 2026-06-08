@@ -41,6 +41,7 @@ function lang($word){
         'PR_NO_POSTS' => ' لا توجد منشورات لعرضها',
         'PR_EDIT' => 'تعديل',
         'PR_DELETE' => 'حذف',
+        'BTN_CANCEL' => 'إلغاء',
         
         'C_USERS' => 'المستخدمون',
         'C_NEW_CONVERSATION' => 'ابدأ محادثة جديدة',

@@ -45,6 +45,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
         <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/chat.php') ? 'active-link' : ''; ?>"
             href="chat.php"><i class="fa-solid fa-comments"></i>
             <?= lang('P_MESSAGES') ?></a>
+        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/posts.php') ? 'active-link' : ''; ?>"
+            href="posts.php"><i class="fa-solid fa-inbox"></i>
+            <?= lang('P_POSTS') ?></a>
         <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/settings.php') ? 'active-link' : ''; ?>"
             href="settings.php"><i class="fa-solid fa-gear"></i>
             <?= lang('P_SETTINGS') ?></a>

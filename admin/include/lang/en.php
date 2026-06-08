@@ -30,6 +30,7 @@ function lang($word)
     'P_DASHBOARD' => 'Dashboard',
     'P_USERS' => 'Users',
     'P_MESSAGES' => 'Messages',
+    'P_POSTS' => 'posts',
     'P_SETTINGS' => 'Settings',
 
     'USER' => 'user',

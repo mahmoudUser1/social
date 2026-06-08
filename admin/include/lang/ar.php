@@ -19,6 +19,7 @@ function lang($word)
     'P_DASHBOARD' => "لوحةالتحكم",
     'P_USERS' => "المستخدمون",
     'P_MESSAGES' => "الرسائل",
+    'P_POSTS' => "منشورات",
     'P_SETTINGS' => "الاعدادات",
 
     'USER' => 'مستخدم',

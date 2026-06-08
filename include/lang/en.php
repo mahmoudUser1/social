@@ -53,6 +53,7 @@ function lang($word)
     'PR_NO_POSTS' => 'No posts to display',
     'PR_EDIT' => 'Edit',
     'PR_DELETE' => 'Delete',
+    'BTN_CANCEL' => 'Cancel',
 
     'C_USERS' => 'Users',
     'C_NEW_CONVERSATION' => 'Start New Conversation',

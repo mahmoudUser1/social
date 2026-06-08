@@ -90,16 +90,24 @@ WHERE `user-id` = (
                             ?>
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <p class="text-post"><pre class="text-post overflow-hidden"><?= htmlspecialchars($post['content']) ?></pre></p>
+                                    <p class="text-post">
+                                    <pre class="text-post overflow-hidden"><?= htmlspecialchars($post['content']) ?></pre>
+                                    </p>
                                     <p class="text-muted text-end mb-0 d-inline-block"
                                         style="font-size: 14px;direction: ltr !important">
                                         <?= date("j F Y", strtotime($post['created-at'])) ?>
                                     </p>
                                     <div class="comment-section d-flex gap-2 w-100 p-2 border-top">
                                         <a href="home.php?page=editPost&id=<?= $post['id'] ?>"
-                                            class="btn btn-primary w-100"><?= lang('PR_EDIT') ?></a>
+                                            class="btn btn-outline-primary btn-sm" title="<?= lang('PR_EDIT') ?>">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            <span class="visually-hidden"><?= lang('PR_EDIT') ?></span>
+                                        </a>
                                         <a href="home.php?page=deletePost&id=<?= $post['id'] ?>"
-                                            class="btn btn-danger w-100"><?= lang('PR_DELETE') ?></a>
+                                            class="btn btn-outline-danger btn-sm" title="<?= lang('PR_DELETE') ?>">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <span class="visually-hidden"><?= lang('PR_DELETE') ?></span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
