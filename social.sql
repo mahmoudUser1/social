@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2026 at 07:40 PM
+-- Generation Time: Jun 09, 2026 at 12:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -59,6 +59,8 @@ CREATE TABLE `users` (
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `verify_code` varchar(10) DEFAULT NULL,
+  `is_verified` tinyint(1) NOT NULL DEFAULT 0,
   `role` int(11) NOT NULL DEFAULT 0,
   `created-at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -67,8 +69,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created-at`) VALUES
-(1, 'Mahmoud Maher', 'tea0mah2009@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', 1, '2026-06-01');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `verify_code`, `is_verified`, `role`, `created-at`) VALUES
+(1, 'Mahmoud Maher', 'tea0mah2009@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL, 0, 1, '2026-06-01'),
+(48, '01145', 'mahmoudmaher01145@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '161460', 0, 0, '2026-06-08');
 
 --
 -- Indexes for dumped tables
@@ -116,7 +119,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- Constraints for dumped tables
