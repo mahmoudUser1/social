@@ -6,7 +6,7 @@ session_start();
 
 include "initials.php";
 
-if (isset($_SESSION["email"])) {
+if (isset($_SESSION["email_admin"])) {
 
 
 
@@ -17,7 +17,7 @@ if (isset($_SESSION["email"])) {
         FROM users 
         WHERE email = ?
     ");
-    $stmt->execute(array($_SESSION["email"]));
+    $stmt->execute(array($_SESSION["email_admin"]));
     $user = $stmt->fetch();
 
     ?>
@@ -56,10 +56,10 @@ if (isset($_SESSION["email"])) {
                                 class="list-group-item list-group-item-action <?= $page == 'password' ? 'active' : '' ?>">
                                 <i class="fa-solid fa-lock"></i> <?= lang('SE_CHANGE_PASSWORD') ?>
                             </a>
-                            <a href="?page=chat"
+                            <!-- <a href="?page=chat"
                                 class="list-group-item list-group-item-action <?= $page == 'chat' ? 'active' : '' ?>">
                                 <i class="fa-solid fa-comments"></i> <?= lang('SE_CHAT_SETTINGS') ?>
-                            </a>
+                            </a> -->
                             <a href="?page=SE_APP"
                                 class="list-group-item list-group-item-action <?= $page == 'SE_APP' ? 'active' : '' ?>">
                                 <i class="fa-solid fa-sliders"></i> <?= lang('SE_APP_SETTINGS') ?>
@@ -92,11 +92,11 @@ if (isset($_SESSION["email"])) {
                             $_SESSION['error'] = lang('SE_ENTER_NAME');
                         } else {
                             $stmt = $con->prepare("UPDATE users SET name = ? WHERE email = ?");
-                            $stmt->execute([$name, $_SESSION["email"]]);
+                            $stmt->execute([$name, $_SESSION["email_admin"]]);
                             $_SESSION['message'] = lang('SE_PROFILE_UPDATED');
                             // تحديث بيانات المستخدم
                             $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
-                            $stmt->execute([$_SESSION["email"]]);
+                            $stmt->execute([$_SESSION["email_admin"]]);
                             $user = $stmt->fetch(PDO::FETCH_ASSOC);
                         }
                     }
@@ -158,7 +158,7 @@ if (isset($_SESSION["email"])) {
                         } else {
                             $hashed_password = sha1($new_password);
                             $stmt = $con->prepare("UPDATE users SET password = ? WHERE email = ?");
-                            $stmt->execute([$hashed_password, $_SESSION["email"]]);
+                            $stmt->execute([$hashed_password, $_SESSION["email_admin"]]);
                             $_SESSION['message'] = lang('SE_PASSWORD_CHANGED_SUCCESSFULLY');
                         }
                     }
@@ -193,107 +193,11 @@ if (isset($_SESSION["email"])) {
                         </div>
                     </div>
                     <?php
-                } elseif ($page == 'chat') {
-
-                    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        $chat_bg = $_POST['chat_bg'];
-                        $_SESSION['chat_bg'] = $chat_bg;
-                        $_SESSION['message'] = lang('SE_CHAT_BACKGROUND_UPDATED');
-                    }
-                    ?>
-                    <div class="col-12 col-lg-7">
-                        <div class="card p-4">
-                            <h4 class="mb-4"><i class="fa-solid fa-comments"></i> <?= lang('SE_CHAT_SETTINGS') ?></h4>
-                            <form method="POST" class="m-0 p-0" action="?page=chat">
-                                <h5>
-                                    <i class="fa-solid fa-palette"></i> <?= lang('SE_SELECT_THEME') ?>
-                                </h5>
-                                <div class="row g-3 m-0 p-0">
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="arabesque.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'arabesque.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/arabesque.png" class="img-fluid rounded border">
-                                            <span>Arabesque</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="argyle.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'argyle.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/argyle.png" class="img-fluid rounded border">
-                                            <span>Argyle</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="black-linen.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-linen.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/black-linen.png" class="img-fluid rounded border">
-                                            <span>Black Linen</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="black-thread-light.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-thread-light.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/black-thread-light.png" class="img-fluid rounded border">
-                                            <span>Black Thread Light</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="black-thread.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-thread.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/black-thread.png" class="img-fluid rounded border">
-                                            <span>Black Thread</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="bright-squares.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'bright-squares.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/bright-squares.png" class="img-fluid rounded border">
-                                            <span>Bright Squares</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="cubes.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'cubes.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/cubes.png" class="img-fluid rounded border">
-                                            <span>Cubes</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="gplay.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'gplay.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/gplay.png" class="img-fluid rounded border">
-                                            <span>GPlay</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="light-gray.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'light-gray.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/light-gray.png" class="img-fluid rounded border">
-                                            <span>Light gray</span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-3"><i
-                                        class="fa-solid fa-arrow-rotate-right"></i> <?= lang('SE_UPDATE') ?></button>
-                            </form>
-                        </div>
-                    </div>
-                    <?php
                 } elseif ($page == 'SE_APP') {
 
                     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                        $app_lang = $_POST['app_lang'];
-                        $_SESSION['app_lang'] = $app_lang;
+                        $app_lang_admin = $_POST['app_lang_admin'];
+                        $_SESSION['app_lang_admin'] = $app_lang_admin;
                         $_SESSION['message'] = lang('SE_APP_LANGUAGE_UPDATED');
                     }
 
@@ -305,11 +209,11 @@ if (isset($_SESSION["email"])) {
                                 <h5> <?= lang('SE_LANGUAGE') ?></h5>
                                 <div class="s_lang_ar_en">
                                     <label class="d-block mb-2">
-                                        <input type="radio" name="app_lang" value="ar.php" <?= (isset($_SESSION['app_lang']) && $_SESSION['app_lang'] == 'ar.php') ? 'checked' : '' ?>>
+                                        <input type="radio" name="app_lang_admin" value="ar.php" <?= (isset($_SESSION['app_lang_admin']) && $_SESSION['app_lang_admin'] == 'ar.php') ? 'checked' : '' ?>>
                                         العربية
                                     </label>
                                     <label class="d-block mb-2">
-                                        <input type="radio" name="app_lang" value="en.php" <?= (isset($_SESSION['app_lang']) && $_SESSION['app_lang'] == 'en.php') ? 'checked' : '' ?>>
+                                        <input type="radio" name="app_lang_admin" value="en.php" <?= (isset($_SESSION['app_lang_admin']) && $_SESSION['app_lang_admin'] == 'en.php') ? 'checked' : '' ?>>
                                         English
                                     </label>
                                 </div>

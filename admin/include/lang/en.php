@@ -19,30 +19,39 @@ function lang($word)
 {
 
     static $lang = [
-    'S_WELCOME' => 'Welcome to the Community',
-    'FIRST_TIME' => 'First time using the app?',
-    'ALREADY_REGISTERED' => 'Already registered?',
-
-    'REGISTER_NEW' => 'Create New Account',
-    'REGISTER' => 'Login',
+    'INVALID_CREDENTIALS' => 'Invalid credentials provided',
+    'REGISTER' => 'Login for Admin',
     'R_LOGIN' => 'Login',
-    'R_HOME' => 'Back to Home',
-    'R_N_LOGIN' => 'Register',
 
     'INPUT_EMAIL' => 'Email Address',
     'INPUT_PASSWORD' => 'Password',
     'INPUT_NAME' => 'Name',
 
-    'P_HOME' => 'Home',
-    'P_PROFILE' => 'Profile',
+    'P_DASHBOARD' => 'Dashboard',
+    'P_USERS' => 'Users',
     'P_MESSAGES' => 'Messages',
     'P_SETTINGS' => 'Settings',
+
+    'USER' => 'user',
+    'ADMIN' => 'admin',
+    'M_C_S_R' => 'The user\'s role must be defined.',
+    'EDIT_SUCCESS' => 'Data has been effectively modified',
+    'DEL_SUCCESS' => 'User deleted successfully',
+    'A_Y_D' => 'Are you sure you want to permanently delete this user and their posts?',
+
+    'P_VIEW_PROFILE' => 'View Profile',
+    'BTN_EDIT' => 'edit',
+    'BTN_DELETE' => 'delete',
+    'BTN_CANCEL' => 'cancel',
+    'ID' => 'id',
+    'FROM' => 'from',
+    'TO' => 'to',
+    'DATE' => 'date',
 
     'H_CREATE_POST' => 'Do you want to create a post?',
     'H_NEW_POST' => 'Create New Post',
     'H_POST_CONTENT' => 'What is on your mind?',
     'H_POST_PUBLISH' => 'Publish',
-    'H_EDIT_POST' => 'Edit Post',
 
     'PR_JOIN_DATE' => 'Join Date',
     'PR_POST_COUNT' => 'Posts Count',
@@ -51,8 +60,6 @@ function lang($word)
     'PR_CREATE_POST' => 'Create Post',
     'PR_EDIT_PROFILE' => 'Edit Profile',
     'PR_NO_POSTS' => 'No posts to display',
-    'PR_EDIT' => 'Edit',
-    'PR_DELETE' => 'Delete',
 
     'C_USERS' => 'Users',
     'C_NEW_CONVERSATION' => 'Start New Conversation',

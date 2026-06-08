@@ -14,10 +14,10 @@ $css = "layout/css/";
 $js = "layout/js/";
 $img = "layout/images/";
 
-if (!isset($_SESSION['app_lang'])) {
-    $_SESSION['app_lang'] = 'ar.php';
+if (!isset($_SESSION['app_lang_admin'])) {
+    $_SESSION['app_lang_admin'] = 'ar.php';
 } else {
-    include $lang . $_SESSION['app_lang'];
+    include $lang . $_SESSION['app_lang_admin'];
 }
 include $func . "getTitle.php";
 
@@ -26,10 +26,4 @@ include $temp . "header.php";
 
 if (!isset($noNavbar)) {
     include $temp . "navbar.php";
-}
-if (isset($_SESSION['chat_bg'])) {
-    $image_chat = $img . $_SESSION['chat_bg'];
-} else {
-    $_SESSION['chat_bg'] = "arabesque.png";
-    $image_chat = $img . $_SESSION['chat_bg'];
 }

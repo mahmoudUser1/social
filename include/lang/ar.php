@@ -30,6 +30,7 @@ function lang($word){
         'H_NEW_POST' => "انشاء منشور جديد",
         'H_POST_CONTENT' => "ماذا يدور في ذهنك؟", 
         'H_POST_PUBLISH' => 'نشر', 
+        'H_EDIT_POST' => 'تعديل المنشور',
 
         'PR_JOIN_DATE' => 'تاريخ الانضمام', 
         'PR_POST_COUNT' => 'عدد المنشورات', 
@@ -38,6 +39,8 @@ function lang($word){
         'PR_CREATE_POST' => 'انشاء منشور', 
         'PR_EDIT_PROFILE' => 'تعديل الملف الشخصي',
         'PR_NO_POSTS' => ' لا توجد منشورات لعرضها',
+        'PR_EDIT' => 'تعديل',
+        'PR_DELETE' => 'حذف',
         
         'C_USERS' => 'المستخدمون',
         'C_NEW_CONVERSATION' => 'ابدأ محادثة جديدة',

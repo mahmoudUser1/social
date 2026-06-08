@@ -29,7 +29,7 @@ if (isset($_SESSION["email"])) {
 
                 <?php
 
-                $stmt = $con->prepare("SELECT * FROM posts");
+                $stmt = $con->prepare("SELECT * FROM posts ORDER BY id DESC");
                 $stmt->execute();
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -62,7 +62,7 @@ if (isset($_SESSION["email"])) {
                                 </div>
                             </div>
                             <div class="post-content m-2 py-2 overflow-hidden">
-                                <pre class="text-post overflow-hidden"><?= $post1['content'] ?></pre>
+                                <pre class="text-post overflow-hidden"><?= htmlspecialchars($post1['content']) ?></pre>
                             </div>
                             <!-- <div class="comment-section d-flex flex-wrap gap-2 w-100 p-2 border-top">
 
@@ -124,7 +124,68 @@ if (isset($_SESSION["email"])) {
 
                 <?php
 
+            } elseif ($page == 'editPost') {
+
+                if (!isset($_GET['id'])) {
+                    header("Location: profile.php");
+                    exit;
+                }
+
+                $postId = $_GET['id'];
+
+                $stmt = $con->prepare("SELECT * FROM posts WHERE id = ?");
+                $stmt->execute([$postId]);
+                $post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if (!$post) {
+                    header("Location: profile.php");
+                    exit;
+                }
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                    $postContent = $_POST['post'];
+
+                    $stmt = $con->prepare("UPDATE posts SET content = ? WHERE id = ?");
+                    $stmt->execute([$postContent, $postId]);
+
+                    header("Location: profile.php");
+                    exit;
+                }
+                ?>
+                <div class="card p-3">
+                    <form action="?page=editPost&id=<?= $postId ?>" method="post">
+                        <h5><?= lang('H_EDIT_POST') ?></h5>
+                        <textarea class="form-control mb-3" name="post"><?= htmlspecialchars($post['content']) ?></textarea>
+                        <button type="submit" class="btn btn-primary"><?= lang('H_POST_PUBLISH') ?></button>
+                    </form>
+                </div>
+                <?php
+            } elseif ($page == 'deletePost') {
+
+                if (!isset($_GET['id'])) {
+                    header("Location: profile.php");
+                    exit;
+                }
+
+                $postId = $_GET['id'];
+
+                $stmt = $con->prepare("SELECT * FROM posts WHERE id = ?");
+                $stmt->execute([$postId]);
+                $post = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if (!$post) {
+                    header("Location: profile.php");
+                    exit;
+                }
+
+                $stmt = $con->prepare("DELETE FROM posts WHERE id = ?");
+                $stmt->execute([$postId]);
+
+                header("Location: profile.php");
+                exit;
             } else {
+
                 ?>
                 <div class="p-2 m-3 card flex-row d-flex justify-content-between align-items-center rounded-5">
                     <h5><?= lang('H_CREATE_POST') ?></h5>
@@ -135,7 +196,7 @@ if (isset($_SESSION["email"])) {
 
                 <?php
 
-                $stmt = $con->prepare("SELECT * FROM posts");
+                $stmt = $con->prepare("SELECT * FROM posts ORDER BY id DESC");
                 $stmt->execute();
                 $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -168,7 +229,7 @@ if (isset($_SESSION["email"])) {
                                 </div>
                             </div>
                             <div class="post-content m-2 py-2 overflow-hidden">
-                                <pre class="text-post overflow-hidden"><?= $post1['content'] ?></pre>
+                                <pre class="text-post overflow-hidden"><?= htmlspecialchars($post1['content']) ?></pre>
                             </div>
                             <!-- <div class="comment-section d-flex flex-wrap gap-2 w-100 p-2 border-top">
 
@@ -198,6 +259,7 @@ if (isset($_SESSION["email"])) {
                         <?php
                     }
                 }
+
             }
 } else {
     header("Location: index.php");

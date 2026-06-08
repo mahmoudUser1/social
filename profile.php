@@ -60,7 +60,7 @@ WHERE `user-id` = (
                             style="direction: ltr !important"><?= $date ?></span></p>
                     <p><span> <?= lang('PR_POST_COUNT') ?> : </span><?= $postCount['total_posts'] ?></p>
                 </div>
-                <div class="contro d-flex justify-content-between gap-2">
+                <div class="control d-flex justify-content-between gap-2">
                     <a href="settings.php" class="btn btn-primary w-100"><?= lang('PR_EDIT_PROFILE') ?></a>
                     <a href="logout.php" class="btn btn-danger w-100"><?= lang('PR_LOGOUT') ?></a>
                     <a href="home.php?page=addPost" class="btn btn-secondary w-100"><?= lang('PR_CREATE_POST') ?></a>
@@ -90,11 +90,17 @@ WHERE `user-id` = (
                             ?>
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <p class="text-post"><?= $post['content'] ?></p>
+                                    <p class="text-post"><pre class="text-post overflow-hidden"><?= htmlspecialchars($post['content']) ?></pre></p>
                                     <p class="text-muted text-end mb-0 d-inline-block"
                                         style="font-size: 14px;direction: ltr !important">
                                         <?= date("j F Y", strtotime($post['created-at'])) ?>
                                     </p>
+                                    <div class="comment-section d-flex gap-2 w-100 p-2 border-top">
+                                        <a href="home.php?page=editPost&id=<?= $post['id'] ?>"
+                                            class="btn btn-primary w-100"><?= lang('PR_EDIT') ?></a>
+                                        <a href="home.php?page=deletePost&id=<?= $post['id'] ?>"
+                                            class="btn btn-danger w-100"><?= lang('PR_DELETE') ?></a>
+                                    </div>
                                 </div>
                             </div>
                             <?php
