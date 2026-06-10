@@ -81,6 +81,38 @@ function lang($word){
         'SE_CHAT_BACKGROUND_UPDATED' =>  'تم تحديث خلفية الدردشة بنجاح',
         'SE_APP_LANGUAGE_UPDATED' =>  'تم تحديث لغة التطبيق بنجاح',
         'SE_LANGUAGE' =>  'اللغة'
+        ,
+
+        // Services / Dashboard labels
+        'SV_SERVICES' => 'الخدمات',
+        'SV_MESSAGES' => 'الرسائل',
+        'SV_FRIENDS' => 'الأصدقاء',
+        'SV_POSTS' => 'المنشورات',
+        'SV_NOTIFICATIONS' => 'الإشعارات',
+        'SV_PREMIUM_FEATURES' => 'ميزات مميزة',
+        'SV_UNLIMITED_MESSAGES' => 'رسائل غير محدودة',
+        'SV_CREATE_GROUPS' => 'إنشاء مجموعات',
+        'SV_FILE_SHARING' => 'مشاركة الملفات',
+        'SV_PRIORITY_SUPPORT' => 'دعم متميز',
+
+        'D_TOTAL_USERS' => 'إجمالي المستخدمين',
+        'D_ACTIVE_USERS' => 'المستخدمون النشطون',
+        'D_TOTAL_ADMINS' => 'إجمالي المسؤولين',
+        'D_SYSTEM_MANAGERS' => 'مسؤولو النظام',
+        'D_TOTAL_POSTS' => 'إجمالي المنشورات',
+        'D_USER_POSTS' => 'منشورات المستخدمين'
+        ,
+        // Additional dashboard / misc
+        'D_SUMMARY' => 'ملخص البيانات الأخيرة للمستخدمين والمسؤولين والمنشورات.',
+        'POST_EMPTY' => 'لا يمكن أن يكون محتوى المنشور فارغاً.',
+        'POST_PUBLISHED' => 'تم نشر المنشور بنجاح.',
+        'D_LAST_USERS' => 'آخر 10 مستخدمين',
+        'D_ADMINS' => 'المسؤولون',
+        'D_LAST_POSTS' => 'آخر 5 منشورات',
+        'NO_USERS_FOUND' => 'لا توجد مستخدمين.',
+        'NO_ADMINS_FOUND' => 'لا توجد مسؤولين.',
+        'NO_POSTS_FOUND' => 'لا توجد منشورات.',
+        'UNKNOWN' => 'مجهول'
     ];
 
     return $lang[$word];

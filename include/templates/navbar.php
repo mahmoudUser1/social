@@ -34,18 +34,18 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <div class="link-nav-1" id="link-navber">
         <a class="text-decoration-none text-info d-block p-3 text-center 
-        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/home.php') ? 'active-link' : ''; ?>" href="home.php"><i
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/home.php') ? 'active-link' : ''; ?>" href="home.php"><i
                 class="fa-solid fa-home"></i>
             <?= lang('P_HOME') ?></a>
         <a class="text-decoration-none text-info d-block p-3 text-center 
-        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/profile.php') ? 'active-link' : ''; ?>" href="profile.php"><i
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/profile.php') ? 'active-link' : ''; ?>" href="profile.php"><i
                 class="fa-solid fa-user"></i>
             <?= lang('P_PROFILE') ?></a>
         <a class="text-decoration-none text-info d-block p-3 text-center 
-        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/chat.php') ? 'active-link' : ''; ?>" href="chat.php"><i
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/chat.php') ? 'active-link' : ''; ?>" href="chat.php"><i
                 class="fa-solid fa-comment-dots"></i>
             <?= lang('P_MESSAGES') ?></a>
-        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/settings.php') ? 'active-link' : ''; ?>" href="settings.php"><i class="fa-solid fa-gear"></i>
+        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/settings.php') ? 'active-link' : ''; ?>" href="settings.php"><i class="fa-solid fa-gear"></i>
             <?= lang('P_SETTINGS') ?></a>
         <!-- <a href="logout.php" class="btn btn-danger d-block m-2">تسجيل الخروج</a> -->
     </div>

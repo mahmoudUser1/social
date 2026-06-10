@@ -92,7 +92,38 @@ function lang($word)
     'SE_PASSWORD_CHANGED_SUCCESSFULLY' => 'Password changed successfully',
     'SE_CHAT_BACKGROUND_UPDATED' => 'Chat background updated successfully',
     'SE_APP_LANGUAGE_UPDATED' => 'Application language updated successfully',
-    'SE_LANGUAGE' => 'Language'
+    'SE_LANGUAGE' => 'Language',
+
+    // Services / Dashboard labels
+    'SV_SERVICES' => 'Services',
+    'SV_MESSAGES' => 'Messages',
+    'SV_FRIENDS' => 'Friends',
+    'SV_POSTS' => 'Posts',
+    'SV_NOTIFICATIONS' => 'Notifications',
+    'SV_PREMIUM_FEATURES' => 'Premium Features',
+    'SV_UNLIMITED_MESSAGES' => 'Unlimited messages',
+    'SV_CREATE_GROUPS' => 'Create groups',
+    'SV_FILE_SHARING' => 'File sharing',
+    'SV_PRIORITY_SUPPORT' => 'Priority support',
+
+    'D_TOTAL_USERS' => 'Total Users',
+    'D_ACTIVE_USERS' => 'Active Users',
+    'D_TOTAL_ADMINS' => 'Total Admins',
+    'D_SYSTEM_MANAGERS' => 'System Managers',
+    'D_TOTAL_POSTS' => 'Total Posts',
+    'D_USER_POSTS' => 'User Posts'
+    ,
+    // Additional dashboard / misc
+    'D_SUMMARY' => 'Last data summary for users, admins, and posts.',
+    'POST_EMPTY' => 'Post content cannot be empty.',
+    'POST_PUBLISHED' => 'Post published successfully.',
+    'D_LAST_USERS' => 'Last 10 Users',
+    'D_ADMINS' => 'Admins',
+    'D_LAST_POSTS' => 'Last 5 Posts',
+    'NO_USERS_FOUND' => 'No users found.',
+    'NO_ADMINS_FOUND' => 'No admins found.',
+    'NO_POSTS_FOUND' => 'No posts found.',
+    'UNKNOWN' => 'Unknown'
     ];
 
     return $lang[$word];

@@ -34,21 +34,21 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     </div>
     <div class="link-nav-1" id="link-navber">
         <a class="text-decoration-none text-info d-block p-3 text-center 
-        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/dashboard.php') ? 'active-link' : ''; ?>"
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/admin/dashboard.php') ? 'active-link' : ''; ?>"
             href="dashboard.php"><i class="fa-solid fa-home"></i>
             <?= lang('P_DASHBOARD') ?></a>
         <a class="text-decoration-none text-info d-block p-3 text-center 
-        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/users.php') ? 'active-link' : ''; ?>"
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/admin/users.php') ? 'active-link' : ''; ?>"
             href="users.php"><i class="fa-solid fa-users"></i>
             <?= lang('P_USERS') ?></a>
         <a class="text-decoration-none text-info d-block p-3 text-center 
-        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/chat.php') ? 'active-link' : ''; ?>"
+        <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/admin/chat.php') ? 'active-link' : ''; ?>"
             href="chat.php"><i class="fa-solid fa-comments"></i>
             <?= lang('P_MESSAGES') ?></a>
-        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/posts.php') ? 'active-link' : ''; ?>"
+        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/admin/posts.php') ? 'active-link' : ''; ?>"
             href="posts.php"><i class="fa-solid fa-inbox"></i>
             <?= lang('P_POSTS') ?></a>
-        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social-media/admin/settings.php') ? 'active-link' : ''; ?>"
+        <a class="text-decoration-none text-info d-block p-3 text-center <?php echo ($_SERVER['SCRIPT_NAME'] === '/MAHMOUD_MAHER/social_updated/admin/settings.php') ? 'active-link' : ''; ?>"
             href="settings.php"><i class="fa-solid fa-gear"></i>
             <?= lang('P_SETTINGS') ?></a>
         <!-- <a href="logout.php" class="btn btn-danger d-block m-2">تسجيل الخروج</a> -->

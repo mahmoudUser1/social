@@ -29,15 +29,21 @@ if (isset($_SESSION["email"])) {
 
             <div class="row m-0 g-2">
                 <div class="modal fade" id="messageModal" style="z-index: 999999999;" tabindex="-1">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 rounded-4 shadow-lg">
 
-                            <div class="modal-header">
+                            <div class="modal-header bg-light border-bottom">
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
 
-                            <div class="modal-body">
-                                <p id="modalMessage"></p>
+                            <div class="modal-body p-4">
+                                <p id="modalMessage" class="mb-0 fs-5"></p>
+                            </div>
+
+                            <div class="modal-footer bg-light border-top">
+                                <button type="button" class="btn btn-primary px-4 rounded-3" data-bs-dismiss="modal">
+                                    OK
+                                </button>
                             </div>
 
                         </div>
@@ -45,36 +51,39 @@ if (isset($_SESSION["email"])) {
                 </div>
 
                 <div class="col-12 col-lg-5">
-                    <div class="control card p-3 sticky-top">
-                        <h5 class="mb-3"><?= lang('P_SETTINGS') ?></h5>
-                        <div class="list-group">
+                    <div class="control card border-0 shadow-sm rounded-4 p-3 sticky-top">
+                        <h5 class="mb-3 fw-bold d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-gears text-primary"></i>
+                            <?= lang('P_SETTINGS') ?>
+                        </h5>
+                        <div class="list-group list-group-flush">
                             <a href="?page=profile"
-                                class="list-group-item list-group-item-action <?= $page == 'profile' ? 'active' : '' ?>">
+                                class="list-group-item list-group-item-action border-0 rounded-3 mb-2 <?= $page == 'profile' ? 'bg-primary text-white' : '' ?>">
                                 <i class="fa-solid fa-user"></i> <?= lang('SE_PERSONAL_DATA') ?>
                             </a>
                             <a href="?page=password"
-                                class="list-group-item list-group-item-action <?= $page == 'password' ? 'active' : '' ?>">
+                                class="list-group-item list-group-item-action border-0 rounded-3 mb-2 <?= $page == 'password' ? 'bg-primary text-white' : '' ?>">
                                 <i class="fa-solid fa-lock"></i> <?= lang('SE_CHANGE_PASSWORD') ?>
                             </a>
                             <a href="?page=chat"
-                                class="list-group-item list-group-item-action <?= $page == 'chat' ? 'active' : '' ?>">
+                                class="list-group-item list-group-item-action border-0 rounded-3 mb-2 <?= $page == 'chat' ? 'bg-primary text-white' : '' ?>">
                                 <i class="fa-solid fa-comments"></i> <?= lang('SE_CHAT_SETTINGS') ?>
                             </a>
                             <a href="?page=SE_APP"
-                                class="list-group-item list-group-item-action <?= $page == 'SE_APP' ? 'active' : '' ?>">
+                                class="list-group-item list-group-item-action border-0 rounded-3 mb-2 <?= $page == 'SE_APP' ? 'bg-primary text-white' : '' ?>">
                                 <i class="fa-solid fa-sliders"></i> <?= lang('SE_APP_SETTINGS') ?>
                             </a>
-                            <!-- <a href="?page=privacy"
-                                class="list-group-item list-group-item-action <?= $page == 'privacy' ? 'active' : '' ?>">
-                                <i class="fa-solid fa-shield"></i> الخصوصية
-                            </a> -->
-                            <!-- <a href="?page=notifications"
-                                class="list-group-item list-group-item-action <?= $page == 'notifications' ? 'active' : '' ?>">
-                                <i class="fa-solid fa-bell"></i> الإشعارات
-                            </a> -->
+                            <a href="?page=services"
+                                class="list-group-item list-group-item-action border-0 rounded-3 mb-2 <?= $page == 'services' ? 'bg-primary text-white' : '' ?>">
+                                <i class="fa-solid fa-concierge-bell"></i> <?= lang('SV_SERVICES') ?>
+                            </a>
                             <a href="?page=about"
-                                class="list-group-item list-group-item-action <?= $page == 'about' ? 'active' : '' ?>">
+                                class="list-group-item list-group-item-action border-0 rounded-3 mb-2 <?= $page == 'about' ? 'bg-primary text-white' : '' ?>">
                                 <i class="fa-solid fa-info-circle"></i> <?= lang('SE_ABOUT') ?>
+                            </a>
+                            <a href="logout.php"
+                                class="list-group-item list-group-item-action border-0 rounded-3 bg-danger text-white text-center fw-semibold">
+                                <i class="fa-solid fa-sign-out-alt me-2"></i><?= lang('PR_LOGOUT') ?>
                             </a>
                         </div>
                     </div>
@@ -164,32 +173,38 @@ if (isset($_SESSION["email"])) {
                     }
                     ?>
                     <div class="col-12 col-lg-7">
-                        <div class="card p-4">
-                            <h4 class="mb-4"><i class="fa-solid fa-lock"></i> <?= lang('SE_CHANGE_PASSWORD') ?></h4>
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-header bg-white border-bottom py-4 px-4">
+                                <h4 class="mb-0 fw-bold d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-lock text-primary"></i>
+                                    <?= lang('SE_CHANGE_PASSWORD') ?>
+                                </h4>
+                            </div>
+                            <div class="card-body p-4">
+                                <form method="POST" action="?page=password">
+                                    <input type="hidden" name="action" value="change_password">
 
-                            <form method="POST" action="?page=password">
-                                <input type="hidden" name="action" value="change_password">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold"><?= lang('SE_CURRENT_PASSWORD') ?></label>
+                                        <input type="password" class="form-control rounded-3 py-2" name="current_password">
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label"><?= lang('SE_CURRENT_PASSWORD') ?></label>
-                                    <input type="password" class="form-control" name="current_password">
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold"><?= lang('SE_NEW_PASSWORD') ?></label>
+                                        <input type="password" class="form-control rounded-3 py-2" name="new_password">
+                                        <small class="text-muted"><?= lang('SE_PASSWORD_LENGTH') ?></small>
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label"><?= lang('SE_NEW_PASSWORD') ?></label>
-                                    <input type="password" class="form-control" name="new_password">
-                                    <small class="text-muted"><?= lang('SE_PASSWORD_LENGTH') ?></small>
-                                </div>
+                                    <div class="mb-4">
+                                        <label class="form-label fw-semibold"><?= lang('SE_CONFIRM_PASSWORD') ?></label>
+                                        <input type="password" class="form-control rounded-3 py-2" name="confirm_password">
+                                    </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label"><?= lang('SE_CONFIRM_PASSWORD') ?></label>
-                                    <input type="password" class="form-control" name="confirm_password">
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa-solid fa-key"></i> <?= lang('SE_UPDATE_PASSWORD') ?>
-                                </button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary px-5 py-2 rounded-3">
+                                        <i class="fa-solid fa-key me-2"></i><?= lang('SE_UPDATE_PASSWORD') ?>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -202,90 +217,104 @@ if (isset($_SESSION["email"])) {
                     }
                     ?>
                     <div class="col-12 col-lg-7">
-                        <div class="card p-4">
-                            <h4 class="mb-4"><i class="fa-solid fa-comments"></i> <?= lang('SE_CHAT_SETTINGS') ?></h4>
-                            <form method="POST" class="m-0 p-0" action="?page=chat">
-                                <h5>
-                                    <i class="fa-solid fa-palette"></i> <?= lang('SE_SELECT_THEME') ?>
-                                </h5>
-                                <div class="row g-3 m-0 p-0">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-header bg-white border-bottom py-4 px-4">
+                                <h4 class="mb-0 fw-bold d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-comments text-primary"></i>
+                                    <?= lang('SE_CHAT_SETTINGS') ?>
+                                </h4>
+                            </div>
+                            <div class="card-body p-4">
+                                <form method="POST" class="m-0 p-0" action="?page=chat">
+                                    <h5 class="fw-semibold mb-3">
+                                        <i class="fa-solid fa-palette me-2"></i><?= lang('SE_SELECT_THEME') ?>
+                                    </h5>
+                                    <div class="row g-3 m-0 p-0">
 
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="arabesque.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'arabesque.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/arabesque.png" class="img-fluid rounded border">
-                                            <span>Arabesque</span>
-                                        </label>
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="arabesque.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'arabesque.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/arabesque.png" class="img-fluid rounded border">
+                                                <span>Arabesque</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="argyle.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'argyle.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/argyle.png" class="img-fluid rounded border">
+                                                <span>Argyle</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="black-linen.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-linen.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/black-linen.png" class="img-fluid rounded border">
+                                                <span>Black Linen</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="black-thread-light.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-thread-light.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/black-thread-light.png" class="img-fluid rounded border">
+                                                <span>Black Thread Light</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="black-thread.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-thread.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/black-thread.png" class="img-fluid rounded border">
+                                                <span>Black Thread</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="bright-squares.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'bright-squares.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/bright-squares.png" class="img-fluid rounded border">
+                                                <span>Bright Squares</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="cubes.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'cubes.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/cubes.png" class="img-fluid rounded border">
+                                                <span>Cubes</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="gplay.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'gplay.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/gplay.png" class="img-fluid rounded border">
+                                                <span>GPlay</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="bg-option">
+                                                <input type="radio" name="chat_bg" value="light-gray.png"
+                                                    <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'light-gray.png') ? 'checked' : '' ?>>
+                                                <img src="layout/images/light-gray.png" class="img-fluid rounded border">
+                                                <span>Light gray</span>
+                                            </label>
+                                        </div>
+
                                     </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="argyle.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'argyle.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/argyle.png" class="img-fluid rounded border">
-                                            <span>Argyle</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="black-linen.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-linen.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/black-linen.png" class="img-fluid rounded border">
-                                            <span>Black Linen</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="black-thread-light.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-thread-light.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/black-thread-light.png" class="img-fluid rounded border">
-                                            <span>Black Thread Light</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="black-thread.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'black-thread.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/black-thread.png" class="img-fluid rounded border">
-                                            <span>Black Thread</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="bright-squares.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'bright-squares.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/bright-squares.png" class="img-fluid rounded border">
-                                            <span>Bright Squares</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="cubes.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'cubes.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/cubes.png" class="img-fluid rounded border">
-                                            <span>Cubes</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="gplay.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'gplay.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/gplay.png" class="img-fluid rounded border">
-                                            <span>GPlay</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="bg-option">
-                                            <input type="radio" name="chat_bg" value="light-gray.png" <?= (isset($_SESSION['chat_bg']) && $_SESSION['chat_bg'] == 'light-gray.png') ? 'checked' : '' ?>>
-                                            <img src="layout/images/light-gray.png" class="img-fluid rounded border">
-                                            <span>Light gray</span>
-                                        </label>
-                                    </div>
-
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-3"><i
-                                        class="fa-solid fa-arrow-rotate-right"></i> <?= lang('SE_UPDATE') ?></button>
-                            </form>
+                                    <button type="submit" class="btn btn-primary mt-4 px-5 py-2 rounded-3"><i
+                                            class="fa-solid fa-arrow-rotate-right me-2"></i><?= lang('SE_UPDATE') ?></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -299,23 +328,106 @@ if (isset($_SESSION["email"])) {
 
                     ?>
                     <div class="col-12 col-lg-7">
-                        <div class="card p-4">
-                            <h4 class="mb-4"><i class="fa-solid fa-sliders"></i> <?= lang('SE_APP_SETTINGS') ?></h4>
-                            <form method="POST" class="m-0 p-0" action="?page=SE_APP">
-                                <h5> <?= lang('SE_LANGUAGE') ?></h5>
-                                <div class="s_lang_ar_en">
-                                    <label class="d-block mb-2">
-                                        <input type="radio" name="app_lang" value="ar.php" <?= (isset($_SESSION['app_lang']) && $_SESSION['app_lang'] == 'ar.php') ? 'checked' : '' ?>>
-                                        العربية
-                                    </label>
-                                    <label class="d-block mb-2">
-                                        <input type="radio" name="app_lang" value="en.php" <?= (isset($_SESSION['app_lang']) && $_SESSION['app_lang'] == 'en.php') ? 'checked' : '' ?>>
-                                        English
-                                    </label>
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-header bg-white border-bottom py-4 px-4">
+                                <h4 class="mb-0 fw-bold d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-sliders text-primary"></i>
+                                    <?= lang('SE_APP_SETTINGS') ?>
+                                </h4>
+                            </div>
+                            <div class="card-body p-4">
+                                <form method="POST" class="m-0 p-0" action="?page=SE_APP">
+                                    <h5 class="fw-semibold mb-3"><?= lang('SE_LANGUAGE') ?></h5>
+                                    <div class="s_lang_ar_en">
+                                        <div class="form-check mb-2">
+                                            <input class="form-check-input" type="radio" name="app_lang" value="ar.php" id="lang_ar" <?= (isset($_SESSION['app_lang']) && $_SESSION['app_lang'] == 'ar.php') ? 'checked' : '' ?>>
+                                            <label class="form-check-label" for="lang_ar">
+                                                العربية
+                                            </label>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input class="form-check-input" type="radio" name="app_lang" value="en.php" id="lang_en" <?= (isset($_SESSION['app_lang']) && $_SESSION['app_lang'] == 'en.php') ? 'checked' : '' ?>>
+                                            <label class="form-check-label" for="lang_en">
+                                                English
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary px-5 py-2 rounded-3 mt-3">
+                                        <i class="fa-solid fa-arrow-rotate-right me-2"></i><?= lang('SE_UPDATE') ?>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                } elseif ($page == 'services') {
+                    ?>
+                    <div class="col-12 col-lg-7">
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-header bg-white border-bottom py-4 px-4">
+                                <h4 class="mb-0 fw-bold d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-concierge-bell text-primary"></i>
+                                    Services
+                                </h4>
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 fs-1 text-primary">
+                                                                    <i class="fa-solid fa-message"></i>
+                                                                </div>
+                                                                <h5 class="fw-bold mb-2"><?= lang('SV_MESSAGES') ?></h5>
+                                                                <p class="text-muted mb-0"><?= lang('SV_MESSAGES') ?> - Send and receive private messages with other users</p>
+                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 fs-1 text-success">
+                                                    <i class="fa-solid fa-users"></i>
+                                                </div>
+                                                <h5 class="fw-bold mb-2"><?= lang('SV_FRIENDS') ?></h5>
+                                                <p class="text-muted mb-0"><?= lang('SV_FRIENDS') ?> - Connect with friends and expand your network</p>
+                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 fs-1 text-info">
+                                                    <i class="fa-solid fa-newspaper"></i>
+                                                </div>
+                                                <h5 class="fw-bold mb-2"><?= lang('SV_POSTS') ?></h5>
+                                                <p class="text-muted mb-0"><?= lang('SV_POSTS') ?> - Share your thoughts and connect with the community</p>
+                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card border-0 shadow-sm rounded-3 h-100">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3 fs-1 text-warning">
+                                                    <i class="fa-solid fa-bell"></i>
+                                                </div>
+                                                <h5 class="fw-bold mb-2"><?= lang('SV_NOTIFICATIONS') ?></h5>
+                                                <p class="text-muted mb-0"><?= lang('SV_NOTIFICATIONS') ?> - Stay updated with notifications and alerts</p>
+                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3"><i
-                                        class="fa-solid fa-arrow-rotate-right"></i> <?= lang('SE_UPDATE') ?></button>
-                            </form>
+
+                                <div class="mt-5 p-4 bg-light rounded-3">
+                                    <h5 class="fw-bold mb-3"><i class="fa-solid fa-star text-warning me-2"></i><?= lang('SV_PREMIUM_FEATURES') ?></h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><?= lang('SV_UNLIMITED_MESSAGES') ?></li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><?= lang('SV_CREATE_GROUPS') ?></li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><?= lang('SV_FILE_SHARING') ?></li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i><?= lang('SV_PRIORITY_SUPPORT') ?></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -323,28 +435,31 @@ if (isset($_SESSION["email"])) {
 
                     ?>
                     <div class="col-12 col-lg-7">
-                        <div class="card p-4">
-                            <h4 class="mb-4"><i class="fa-solid fa-info-circle"></i> <?= lang('SE_ABOUT') ?></h4>
-
-                            <div class="mb-3">
-                                <h5><?= lang('SE_APP_NAME') ?></h5>
-                                <p class="text-muted"><?= lang('SE_VERSION') ?> <?= $version ?></p>
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-header bg-white border-bottom py-4 px-4">
+                                <h4 class="mb-0 fw-bold d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-info-circle text-primary"></i>
+                                    <?= lang('SE_ABOUT') ?>
+                                </h4>
                             </div>
+                            <div class="card-body p-4">
+                                <div class="mb-4">
+                                    <h5 class="fw-bold"><?= lang('SE_APP_NAME') ?></h5>
+                                    <p class="text-muted"><?= lang('SE_VERSION') ?> <?= $version ?></p>
+                                </div>
 
-                            <div class="mb-3">
-                                <h6><?= lang('SE_FEATURES') ?>:</h6>
-                                <ul class="list-unstyled">
-                                    <!-- <li><i class="fa-solid fa-check text-success"></i> إنشاء ومشاركة المنشورات</li> -->
-                                    <!-- <li><i class="fa-solid fa-check text-success"></i> التفاعل مع المنشورات (إعجاب وتعليق)</li> -->
-                                    <li><i class="fa-solid fa-check text-success"></i> <?= lang('SE_FRIENDS_SYSTEM') ?></li>
-                                    <li><i class="fa-solid fa-check text-success"></i> <?= lang('SE_PRIVATE_MESSAGES') ?></li>
-                                    <li><i class="fa-solid fa-check text-success"></i> <?= lang('SE_NOTIFICATIONS') ?></li>
-                                    <!-- <li><i class="fa-solid fa-check text-success"></i> إعدادات الخصوصية</li> -->
-                                </ul>
-                            </div>
+                                <div class="mb-4">
+                                    <h6 class="fw-bold mb-3"><?= lang('SE_FEATURES') ?>:</h6>
+                                    <ul class="list-unstyled ms-2">
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> <?= lang('SE_FRIENDS_SYSTEM') ?></li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> <?= lang('SE_PRIVATE_MESSAGES') ?></li>
+                                        <li class="mb-2"><i class="fa-solid fa-check text-success me-2"></i> <?= lang('SE_NOTIFICATIONS') ?></li>
+                                    </ul>
+                                </div>
 
-                            <div class="mb-3">
-                                <p class="text-muted"><?= lang('SE_THANK_YOU') ?></p>
+                                <div>
+                                    <p class="text-muted mb-0"><?= lang('SE_THANK_YOU') ?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -369,40 +484,46 @@ if (isset($_SESSION["email"])) {
 
                     ?>
                     <div class="col-12 col-lg-7">
-                        <div class="card p-4">
-                            <h4 class="mb-4"><i class="fa-solid fa-user"></i> <?= lang('SE_PERSONAL_DATA') ?></h4>
-
-                            <div class="profile-avatar text-light text-capitalize mb-3 mx-auto bg-primary rounded-circle d-flex justify-content-center align-items-center fw-bolder"
-                                style="width: 100px; height: 100px; font-size: 40px;">
-                                <?= $user['name'][0] ?? 'U' ?>
+                        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card-header bg-white border-bottom py-4 px-4">
+                                <h4 class="mb-0 fw-bold d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-user text-primary"></i>
+                                    <?= lang('SE_PERSONAL_DATA') ?>
+                                </h4>
                             </div>
-
-                            <form method="POST" action="?page=profile">
-                                <input type="hidden" name="action" value="update_profile">
-
-                                <div class="mb-3">
-                                    <label class="form-label"><?= lang('INPUT_NAME') ?></label>
-                                    <input type="text" class="form-control" name="name"
-                                        value="<?= htmlspecialchars($user['name']) ?>">
+                            <div class="card-body p-4">
+                                <div class="profile-avatar text-light text-capitalize mb-4 mx-auto bg-primary rounded-circle d-flex justify-content-center align-items-center fw-bolder"
+                                    style="width: 120px; height: 120px; font-size: 48px;">
+                                    <?= $user['name'][0] ?? 'U' ?>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label"><?= lang('INPUT_EMAIL') ?></label>
-                                    <input type="email" class="form-control" value="<?= htmlspecialchars($user['email']) ?>"
-                                        disabled>
-                                    <small class="text-muted"><?= lang('SE_NO_CHANGE_EMAIL') ?></small>
-                                </div>
+                                <form method="POST" action="?page=profile">
+                                    <input type="hidden" name="action" value="update_profile">
 
-                                <div class="mb-3">
-                                    <label class="form-label"><?= lang('PR_JOIN_DATE') ?></label>
-                                    <input type="text" style="direction: ltr !important" class="form-control"
-                                        value="<?= date('j F Y', strtotime($user['created-at'])) ?>" disabled>
-                                </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold"><?= lang('INPUT_NAME') ?></label>
+                                        <input type="text" class="form-control rounded-3 py-2" name="name"
+                                            value="<?= htmlspecialchars($user['name']) ?>">
+                                    </div>
 
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa-solid fa-save"></i> <?= lang('SE_SAVE_CHANGES') ?>
-                                </button>
-                            </form>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-semibold"><?= lang('INPUT_EMAIL') ?></label>
+                                        <input type="email" class="form-control rounded-3 py-2" value="<?= htmlspecialchars($user['email']) ?>"
+                                            disabled>
+                                        <small class="text-muted"><?= lang('SE_NO_CHANGE_EMAIL') ?></small>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <label class="form-label fw-semibold"><?= lang('PR_JOIN_DATE') ?></label>
+                                        <input type="text" style="direction: ltr !important" class="form-control rounded-3 py-2"
+                                            value="<?= date('j F Y', strtotime($user['created-at'])) ?>" disabled>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary px-5 py-2 rounded-3">
+                                        <i class="fa-solid fa-save me-2"></i><?= lang('SE_SAVE_CHANGES') ?>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <?php

@@ -45,7 +45,11 @@ if ($page == "login") {
 
         if ($user) {
             $_SESSION["email"] = $email;
-            header("Location: home.php");
+            if ($user['is_verified'] == 0) {
+                header("Location: verify.php");
+            } else {
+                header("Location: home.php");
+            }
             exit;
         } else {
             // إضافة رسالة الخطأ هنا
@@ -55,12 +59,12 @@ if ($page == "login") {
 
     ?>
     <div class="vh-100 pro-log">
-        <div class="rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
+        <div class="rounded-4 card col-12 col-md-5 p-3 mx-auto box-page shadow-sm">
             <h2 class="text-center"><?= lang('REGISTER') ?></h2>
             <form action="?page=login" method="post">
-                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3"
+                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3 rounded-3"
                     autocomplete="off" />
-                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3"
+                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3 rounded-3"
                     autocomplete="new-password" />
                 <button type="submit" class="btn btn-primary w-100"><?= lang('R_LOGIN') ?></button>
                 <a href="index.php" class="d-block m-3 text-center"><?= lang('R_HOME') ?></a>
@@ -94,11 +98,23 @@ if ($page == "login") {
         if ($check->rowCount() > 0) {
             $_SESSION['error'] = "هذا البريد الإلكتروني مسجل بالفعل، جرب تسجيل الدخول.";
         } else {
-            $stmt = $con->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-            if ($stmt->execute([$name, $email, $password])) {
+            // توليد كود التحقق
+            $verificationCode = str_pad(rand(0, 999999), 6, '0', STR_PAD_LEFT);
+            
+            $stmt = $con->prepare("INSERT INTO users (name, email, password, verify_code, is_verified) VALUES (?, ?, ?, ?, 0)");
+            if ($stmt->execute([$name, $email, $password, $verificationCode])) {
+                
+                // إرسال الإيميل
+                $to = $email;
+                $subject = "كود التحقق الخاص بك - Social Network";
+                $message = "أهلاً بك يا " . $name . "\r\n";
+                $message .= "كود التحقق الخاص بك هو: " . $verificationCode . "\r\n";
+                $headers = "From: tea0mah2009@gmail.com" . "\r\n" . "Content-Type: text/plain; charset=UTF-8";
+                
+                mail($to, $subject, $message, $headers);
+
                 $_SESSION["email"] = $email;
-                $_SESSION['message'] = "تم إنشاء الحساب بنجاح!";
-                header("Location: home.php");
+                header("Location: verify.php");
                 exit;
             } else {
                 $_SESSION['error'] = "حدث خطأ غير متوقع، يرجى المحاولة لاحقاً.";
@@ -108,14 +124,14 @@ if ($page == "login") {
 
     ?>
     <div class="vh-100 pro-log">
-        <div class="rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
+        <div class="rounded-4 card col-12 col-md-5 p-3 mx-auto box-page shadow-sm">
             <h2 class="text-center"><?= lang('REGISTER_NEW') ?></h2>
             <form action="?page=newlogin" method="post">
-                <input name="name" type="text" placeholder="<?= lang('INPUT_NAME') ?>" class="form-control my-3"
+                <input name="name" type="text" placeholder="<?= lang('INPUT_NAME') ?>" class="form-control my-3 rounded-3"
                     autocomplete="off" />
-                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3"
+                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3 rounded-3"
                     autocomplete="off" />
-                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3"
+                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3 rounded-3"
                     autocomplete="new-password" />
                 <button type="submit" class="btn btn-primary w-100"><?= lang('R_N_LOGIN') ?></button>
                 <a href="index.php" class="d-block m-3 text-center"><?= lang('R_HOME') ?></a>
@@ -147,7 +163,11 @@ if ($page == "login") {
 
         if ($user) {
             $_SESSION["email"] = $email;
-            header("Location: home.php");
+            if ($user['is_verified'] == 0) {
+                header("Location: verify.php");
+            } else {
+                header("Location: home.php");
+            }
             exit;
         } else {
             $_SESSION['error'] = "البريد الإلكتروني أو كلمة المرور غير صحيحة!";
@@ -156,12 +176,12 @@ if ($page == "login") {
 
     ?>
     <div class="vh-100 pro-log">
-        <div class="rounded-3 card col-12 col-md-5 p-3 mx-auto box-page">
+        <div class="rounded-4 card col-12 col-md-5 p-3 mx-auto box-page shadow-sm">
             <h2 class="text-center"><?= lang('REGISTER') ?></h2>
             <form action="?page=login" method="post">
-                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3"
+                <input name="mail" type="email" placeholder="<?= lang('INPUT_EMAIL') ?>" class="form-control my-3 rounded-3"
                     autocomplete="off" />
-                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3"
+                <input name="pass" type="password" placeholder="<?= lang('INPUT_PASSWORD') ?>" class="form-control my-3 rounded-3"
                     autocomplete="new-password" />
                 <button type="submit" class="btn btn-primary w-100"><?= lang('R_LOGIN') ?></button>
                 <a href="index.php" class="d-block m-3 text-center"><?= lang('R_HOME') ?></a>

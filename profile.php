@@ -37,7 +37,7 @@ WHERE `user-id` = (
         </div>
         <div class="col-12 col-lg-7 col-md-6">
 
-            <div class="p-3 card">
+            <div class="card border-0 shadow-sm rounded-4 p-4">
                 <div class="profile-info">
                     <div class="
                         profile-avatar
@@ -88,11 +88,9 @@ WHERE `user-id` = (
                     if (count($posts) > 0) {
                         foreach ($posts as $post) {
                             ?>
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <p class="text-post">
-                                    <pre class="text-post overflow-hidden"><?= htmlspecialchars($post['content']) ?></pre>
-                                    </p>
+                            <div class="card mb-3 shadow-sm rounded-3 p-3">
+                                        <div class="card-body p-2">
+                                    <p class="text-post"><pre class="text-post overflow-hidden"><?= htmlspecialchars($post['content']) ?></pre></p>
                                     <p class="text-muted text-end mb-0 d-inline-block"
                                         style="font-size: 14px;direction: ltr !important">
                                         <?= date("j F Y", strtotime($post['created-at'])) ?>
