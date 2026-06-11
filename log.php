@@ -1,5 +1,13 @@
 <?php
 // 1. يجب أن تكون session_start في أول السطر لضمان عمل الرسائل
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require_once 'include/library/PHPMailer/src/Exception.php';
+require_once 'include/library/PHPMailer/src/PHPMailer.php';
+require_once 'include/library/PHPMailer/src/SMTP.php';
+
 session_start();
 
 $noNavbar = '';
@@ -111,7 +119,32 @@ if ($page == "login") {
                 $message .= "كود التحقق الخاص بك هو: " . $verificationCode . "\r\n";
                 $headers = "From: tea0mah2009@gmail.com" . "\r\n" . "Content-Type: text/plain; charset=UTF-8";
                 
-                mail($to, $subject, $message, $headers);
+                $mail = new PHPMailer(true);
+
+                try {
+                    // إعدادات الخادم
+                    $mail->isSMTP();
+                    $mail->Host = 'sandbox.smtp.mailtrap.io';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'b6e9ffd04c6ef0';
+                    $mail->Password = 'db9845e902c646';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port = 2525;
+
+                    // المستلمون
+                    $mail->setFrom('tea0mah2009@gmail.com', 'Social Network');
+                    $mail->addAddress($to, $name);
+
+                    // المحتوى
+                    $mail->isHTML(false);
+                    $mail->Subject = $subject;
+                    $mail->Body    = $message;
+
+                    $mail->send();
+                } catch (Exception $e) {
+                    $_SESSION['error'] = "فشل إرسال كود التحقق. Mailer Error: {$mail->ErrorInfo}";
+                    // يمكنك تسجيل الخطأ هنا للمراجعة
+                }
 
                 $_SESSION["email"] = $email;
                 header("Location: verify.php");

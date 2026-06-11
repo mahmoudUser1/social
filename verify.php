@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form method="POST">
             <div class="mb-4">
                 <input name="v_code" type="text" maxlength="6" placeholder="000000"
-                    class="form-control text-center fs-1 fw-bold tracking-widest" style="letter-spacing: 10px;" required
+                    class="form-control text-center fs-1 fw-bold tracking-widest" style="letter-spacing: 10px;" 
                     autocomplete="off" />
             </div>
             <button type="submit" class="btn btn-primary w-100 py-2 fs-5">تأكيد الكود</button>
